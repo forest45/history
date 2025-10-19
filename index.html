@@ -1,69 +1,308 @@
-
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добро пожаловать</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Михаил — Ремонт эндуро мотоциклов | Йошкар-Ола</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --accent: #e63946;
+      --dark: #1d3557;
+      --light: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+            url('./img1.akspic.ru-motokross-motogonshhik-velosiped-velosiped_gryazi-off_roud-5184x3456.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .floating {
+      position: absolute;
+      opacity: 0.15;
+      z-index: 0;
+      animation: float 12s infinite ease-in-out;
+    }
+
+    .floating:nth-child(1) {
+      top: 15%;
+      left: 10%;
+      font-size: 4rem;
+      animation-delay: 0s;
+    }
+
+    .floating:nth-child(2) {
+      bottom: 20%;
+      right: 15%;
+      font-size: 3.5rem;
+      animation-delay: -4s;
+    }
+
+    .floating:nth-child(3) {
+      top: 40%;
+      right: 25%;
+      font-size: 2.8rem;
+      animation-delay: -8s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards 0.3s;
+    }
+
+    .hero p {
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards 0.6s;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--accent);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards 0.9s;
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(230, 57, 70, 0.6);
+      background: #d42a39;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Sections */
+    .section {
+      padding: 100px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.6rem;
+      margin-bottom: 60px;
+      color: var(--dark);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin: 12px auto;
+      border-radius: 2px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .service-card h3 {
+      color: var(--accent);
+      margin: 15px 0 10px;
+      font-size: 1.5rem;
+    }
+
+    .about-text {
+      line-height: 1.8;
+      font-size: 1.15rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+    }
+
+    /* Contacts */
+    .contact-info {
+      text-align: center;
+      font-size: 1.3rem;
+      line-height: 2;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: var(--dark);
+      color: white;
+      font-size: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+      .hero p {
+        font-size: 1.3rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .btn {
+        padding: 12px 28px;
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .floating {
+        font-size: 2rem !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Основная страница -->
-    <header>
-        <h1>Привет, Путник! 👋</h1>
-        
-        <p class="story">
-            Давным-давно, в момент, когда <span class="highlight">время замедлило свой бег</span>, 
-            а звёзды выстроились в таинственный узор, открылся <strong>Путь Невидимых Дверей</strong>. 
-            Его не видно на картах, он не отмечен ни в одном учебнике. 
-            Но каждый, кто чувствует зов внутри — <em>шёпот в сердце, дрожь в пальцах, 
-            мечту, от которой не отвернёшься</em> — может его найти.
-        </p>
 
-        <p class="story">
-            Говорят, этот путь ведёт к <span class="highlight">источнику света</span>, 
-            который не сжигает, а пробуждает. К месту, где каждый становится тем, 
-            кем был рождён быть. Где ошибки — шаги, а страхи — тени, 
-            которые рассеиваются при первом луче решимости.
-        </p>
-
-        <p class="story">
-            Ты не просто зашёл сюда случайно.  
-            <strong>Ты был призван.</strong>
-        </p>
-
-        <a href="#modal" class="btn">Начать путешествие</a>
-    </header>
-
-    <footer>
-        &copy; 2025 — Место, где всё только начинается.
-    </footer>
-
-    <!-- Модальное окно (форма) -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <a href="#" class="close-btn">&times;</a>
-            <h2>Добро пожаловать!</h2>
-            <p>Расскажи немного о себе — и путь откроется.</p>
-            <form>
-                <div class="input-group">
-                    <label for="name">Имя</label>
-                    <input type="text" id="name" placeholder="Как тебя зовут?" required>
-                </div>
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Твой email" required>
-                </div>
-                <div class="input-group">
-                    <label for="age">Возраст</label>
-                    <input type="number" id="age" placeholder="Сколько тебе лет?" required>
-                </div>
-                <button type="submit" class="btn">Продолжить путь</button>
-            </form>
-        </div>
+  <!-- Hero with Enduro background -->
+  <div class="hero">
+    <div class="floating">🏍️</div>
+    <div class="floating">🔧</div>
+    <div class="floating">💨</div>
+    <div class="hero-content">
+      <h1>Михаил — Гуру эндуро</h1>
+      <p>Ремонт мототехники в Йошкар-Оле с душой и опытом</p>
+      <a href="#contacts" class="btn">Позвонить мастеру</a>
     </div>
+  </div>
+
+  <!-- About -->
+  <section class="section">
+    <h2 class="section-title">Почему именно я?</h2>
+    <div class="about-text">
+      <p>Я — Михаил, настоящий мотоциклист и мастер с 10-летним стажем. Каждый мой день начинается с рёва мотора и заканчивается на трассе или в мастерской.</p>
+      <p>Ремонтирую эндуро, кроссовые и туристические мотоциклы любой сложности. Работаю только с качественными запчастями и даю гарантию на всё.</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section">
+    <h2 class="section-title">Что я предлагаю</h2>
+    <div class="services">
+      <div class="service-card">
+        <h3>Диагностика</h3>
+        <p>Полная проверка двигателя, подвески, электрики — найду любую неисправность.</p>
+      </div>
+      <div class="service-card">
+        <h3>Ремонт ДВС</h3>
+        <p>Восстановление цилиндров, замена колец, настройка зажигания — всё под ключ.</p>
+      </div>
+      <div class="service-card">
+        <h3>Техобслуживание</h3>
+        <p>Замена масла, фильтров, тормозной системы — чтобы ваш байк служил дольше.</p>
+      </div>
+      <div class="service-card">
+        <h3>Сборка под заказ</h3>
+        <p>Соберу и настрою эндуро под ваш стиль катания — для леса, бездорожья или города.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacts -->
+  <section class="section" id="contacts">
+    <h2 class="section-title">Свяжитесь со мной</h2>
+    <div class="contact-info">
+      <p><strong>📍 Адрес:</strong> г. Йошкар-Ола, переулок Пролетарский, д. 1</p>
+      <p><strong>📞 Телефон:</strong> <a href="tel:+79969583623">+7 (996) 958-36-23</a></p>
+      <p>Звоните или пишите в WhatsApp — отвечу сразу!</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Михаил — Ремонт эндуро мотоциклов. Йошкар-Ола.</p>
+  </footer>
+
 </body>
 </html>

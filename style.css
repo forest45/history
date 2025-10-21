@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Анимированные учебники */
+.book {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    background: linear-gradient(45deg, #d4af37, #f0e68c);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    animation: fly linear infinite;
+    z-index: 1;
+}
+
+.book::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    right: 5px;
+    height: 6px;
+    background: #8b4513;
+    border-radius: 2px;
+}
+
+@keyframes fly {
+    0% {
+        transform: translateX(-100px) translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(calc(100vw + 100px)) translateY(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Изображение Фемиды */
+.themis-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+
+
+.themis-img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23d4af37" opacity="0.7"/><text x="50" y="55" font-family="Arial" font-size="40" fill="white">⚖️</text></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: scalePulse 3s infinite ease-in-out;
+}
+
+@keyframes scalePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Секция приветствия */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Секция "Почему сейчас" */
+.why-now {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 20px 0;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.why-now h2 {
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+/* Секция "О главном" */
+.about {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 20px 0;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.about-card {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.about-card h3 {
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+/* Секция "Что ты получишь" */
+.benefits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 20px 0;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.benefit-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-left: 4px solid #d4af37;
+    border-radius: 0 8px 8px 0;
+    transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+/* Секция "Секрет" */
+.secret {
+    background: linear-gradient(45deg, #d4af37, #b8860b);
+    padding: 25px;
+    border-radius: 15px;
+    color: #000;
+    margin: 20px 0;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.secret p {
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Кнопка контакта */
+.contact-btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 30px auto;
+    padding: 15px 25px;
+    background: linear-gradient(45deg, #0088cc, #00aaff);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,136,204,0.4);
+    animation: pulse 2s infinite;
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 7px 20px rgba(0,136,204,0.6);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,136,204,0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0,136,204,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,136,204,0); }
+}
+
+/* P.S. */
+.ps {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 20px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+/* Адаптивность */
+@media (min-width: 768px) {
+    .about {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .benefits {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .benefits {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .book {
+        width: 70px;
+        height: 90px;
+        font-size: 14px;
+    }
+}
